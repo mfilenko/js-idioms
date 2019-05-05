@@ -51,3 +51,30 @@ Helpers
   ```
 
   Source: https://twitter.com/JakeDohm/status/1118973133443207179
+
+* Go-like results handling[^1]:
+
+  ```javascript
+  function O_o(promise) {
+    return promise.then(data => {
+      if (data instanceof Error) return [data];
+      return [null, data];
+    }).catch(err => [err]);
+  }
+
+  // Usage:
+  async function usageExample(params) {
+    const [err, data] = await O_o(myPromise(params));
+
+    if (err) {
+      // Handle or throw.
+    }
+
+    // Do stuff with data.
+    return data;
+  }
+  ```
+
+  Source: https://twitter.com/davidwells/status/1119729914876284928
+
+[^1]: Not quite idiomatic, but still cool and useful :-)
